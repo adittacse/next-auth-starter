@@ -3,6 +3,7 @@ import { FaReact } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { SiMongodb } from "react-icons/si";
 import Link from "next/link";
+import LoginButton from "@/components/LoginButton";
 
 export default function Home() {
     return (
@@ -17,7 +18,8 @@ export default function Home() {
                 <h2 className="text-5xl">NEXT AUTH</h2>
             </div>
             <div className="flex gap-5">
-                <button className="btn">Login</button>
+                <LoginButton />
+
                 <Link href="/register" className="btn">
                     Register
                 </Link>
