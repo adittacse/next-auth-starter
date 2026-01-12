@@ -37,6 +37,30 @@ export const authOptions = {
         }),
         // ...add more providers here
     ],
+    callbacks: {
+        async signIn({ user, account, profile, email, credentials }) {
+            return true
+        },
+
+        async redirect({ url, baseUrl }) {
+            return baseUrl
+        },
+
+        async session({ session, token, user }) {
+            if (token) {
+                session.role = token.role;
+            }
+            return session
+        },
+
+        async jwt({ token, user, account, profile, isNewUser }) {
+            if (user) {
+                token.email = user.email;
+                token.role = user.role;
+            }
+            return token
+        }
+    }
 }
 
 const handler = NextAuth(authOptions);
